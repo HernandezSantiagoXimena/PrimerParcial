@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <link href="https://fonts.cdnfonts.com/css/vazirmatn" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/noto-sans-devanagari" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/unbounded" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/maulysia" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/bavarian" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/jomolhari-2" rel="stylesheet">
+                
+        <link href="https://fonts.cdnfonts.com/css/rossans" rel="stylesheet">
+                
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <title>Peliculas API</title>
 </head>
 <body>
+    <div class="contener" style=" background-color: #dd2b4c;">
+        <a class="navbar-brand" href="/XIMENA/milu.html" style="color:  #eef0f2; font-size: 21px;">Inicio</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="nav navbar-nav" style="font-family: 'Vazirmatn', sans-serif; background-color: none; font-size: 18px;">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" 
+                    aria-expanded="false" style="color: #eef0f2;">
+                        Unidad 1
+                    </a>
+                
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/ximenahdz/miau.php">Mostrar Datos 1</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/miau2.php">Mostrar Datos 2</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/miau3.php">Mostrar Datos 3</a><br>
+                        
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false" style="color: #eef0f2;">
+                        Unidad 2
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/ximenahdz/miau4.php">Practica 4</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/miau5.php">Practica 5</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/miau5b.php">Practica 5b</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/ximenaproyect.php">Proyecto final</a><br>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false" style="color: #eef0f2;">
+                        Unidad 3
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/ximenahdz/ximena6.html">Practica 6</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/ximena7.html">Practica 7</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/ximena8.html">Practica 8</a><br>
+                        <a class="dropdown-item" href="/ximenahdz/ximena9.html">Practica 9</a><br>
+                        <a class="dropdown-item" href="#">Practica 10</a><br>
+                    </div>
+                </li>
+            </ul>
+       </div>
+    </div>
+
     <style>
         *{
             box-sizing: border-box;
@@ -13,7 +80,7 @@
         :root{
     --color-primario: #0555ce;
     --color-secundario: #ffb3c6;
-    --color-terciario: #ebc72b;
+    --color-terciario: #fd9d2f;
     --color-cuarto: #f16a1c;
     --color-quinto: #f1620f;
     
@@ -53,7 +120,7 @@
         .personaje{
             width: 300px;
             margin: 15px;
-            background-color: var(--color-secundario);
+            background-color: var(--color-terciario);
             box-shadow: 10px 15px 5px black;
             position: relative;
             overflow: hidden;
@@ -89,7 +156,7 @@
         }
         
         .overview{
-            background-color: #1b2dc9;
+            background-color: #3964c2;
             padding: 15px;
             position: absolute;
             left: 0;
@@ -107,58 +174,57 @@
     <header>
         <img src="logo2.jpg" alt="logo" style="width: 100px;">
         <form id="form">
-            <input type="text" id="search" class="search" placeholder="Buscar pelicula">
+            <input type="text" id="search" class="search" placeholder="Buscar personaje">
         </form>
     </header>
     <main id="main"></main>
     <script>
-        const API_URL ="https://dragonball-api.com/api/characters";
+        const API_URL = 'https://dragonball-api.com/api/characters';
         const main = document.getElementById('main');
         const form = document.getElementById('form');
         const search = document.getElementById('search');
 
-        getCharacters(API_URL)
-        
+        getCharacters(API_URL);
+
         async function getCharacters(url){
             const res = await fetch(url);
             const data = await res.json();
-
-            showCharacters(data.items||data);
+            showCharacters(data.items || data);
         }
-        function showCharacters(Characters){
-            main.innerHTML = '';
 
-            Characters.forEach((char) =>{
-                //esta linea va a poner todos los elementos al principio, para eso el forEach, es similar al "for", pero el for tiene su inicializacion, condicion y limitante
-                const {id, name, image, ki, maxki,race, gender, description} = movie;
-                //esta linea pone lo que nos va a interesar del API que vamos a obtener
+        function showCharacters(characters){
+            main.innerHTML = '';
+            characters.forEach((char) => {
+                const { id, name, image, ki, maxKi, race, gender, description } = char;
                 const charElements = document.createElement('div');
                 charElements.classList.add('personaje');
-                charElements.innerHTML =`
-                <img src = "${image}" alt="${title}">
-                <div class="personaje-info">
-                    <h1>${id}</h1>
-                    <h3>${name}</h3>
-                  <br>
-                  ${race}
-                  </div>
-                  <div class= "overview">
-                    <h3>Descripcion</h3>
-                    <p><strong>Ki:</strong>${ki}</p>
-                    <p><strong>Max Ki:</strong>${maxki}</p>
-                    ${descripcion}
-                            </div>`
-                            main.appendChild(charElements);
-            });}
-        
-                form.addEventListener('submit', (e) =>{
-                    e.preventDefault()
-                    const searchTerm = search.value.toLowerCase();
-                    if(searchTerm && searchTerm !==''){
-                        getCharacters(SEARCH_API +  `7name=${searchTerm}`)
-                        search.value='';
-                    }else{ window.location.reload();}
-                })
+                charElements.innerHTML = `
+                    <img src="${image}" alt="${name}">
+                    <div class="personaje-info">
+                        <h1>${name}</h1>
+                        <span>${race}</span>
+                    </div>
+                    <div class="overview">
+                        <h3>Descripción</h3> 
+                        <p><strong>Ki:</strong> ${ki}</p>
+                        <p><strong>Max Ki:</strong> ${maxKi}</p>
+                        <p>${description}</p>
+                    </div>
+                `;
+                main.appendChild(charElements);
+            });
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = search.value.toLowerCase();
+            if (searchTerm && searchTerm !== '') {
+                getCharacters(`${API_URL}?name=${searchTerm}`);
+                search.value = '';
+            } else {
+                window.location.reload();
+            }
+        });
     </script>
 </body>
 
